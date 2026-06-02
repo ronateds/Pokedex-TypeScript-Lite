@@ -1,0 +1,28 @@
+{
+  "name": "pokedex-typescript-lite",
+  "version": "1.0.0",
+  "description": "​Miniprojeto Avaliativo 01 do curso de desenvolvimento backend do SCTEC.  ​Neste miniprojeto, será desenvolvida uma aplicação simples em Node.js com TypeScript,​ ​executada pelo terminal, para consultar dados de Pokémon em uma API pública e organizar​ ​alguns resultados em um catálogo local durante a execução do programa.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx src/main.ts",
+    "start": "tsx src/main.ts",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ronateds/Pokedex-TypeScript-Lite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ronateds/Pokedex-TypeScript-Lite/issues"
+  },
+  "homepage": "https://github.com/ronateds/Pokedex-TypeScript-Lite#readme",
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}
