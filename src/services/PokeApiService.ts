@@ -7,7 +7,7 @@ export async function buscarPokemon(nomeOuId: string): Promise<PokemonResumo | n
 
             if (!resposta.ok) {
                 console.log(`[ERRO] Pokémon não encontrado: ${nomeOuId}`);
-                resolve(null);
+                return null;
                 return;
             }
 
@@ -16,7 +16,7 @@ export async function buscarPokemon(nomeOuId: string): Promise<PokemonResumo | n
             const pokemon: PokemonResumo = {
                 id: dados.id,
                 nome: dados.name,
-                tipos: dados.types.map( (item: any) => item.type.name ), // ✅ AQUI ESTÁ A CORREÇÃO!
+                tipos: dados.types.map( (item: any) => item.type.name ),
                 altura: dados.height,
                 peso: dados.weight
             };
@@ -25,7 +25,7 @@ export async function buscarPokemon(nomeOuId: string): Promise<PokemonResumo | n
 
         } catch (erro) {
             console.log("[ERRO] Não foi possível buscar o Pokémon.");
-            resolve(null);
+            return null;
         }
     });
 }
