@@ -1,4 +1,9 @@
-import { CatalogoPokemon } from "../models/Pokemon";
+import { CatalogoPokemon, PokemonResumo } from "../models/Pokemon";
 
-//cria novo catalogo na memória
+// Cria novo catalogo na memória
 const catalogo = new CatalogoPokemon()
+
+// Adiciona pokemon no catálogo
+function adicionarAoCatalogo(pokemon: PokemonResumo): void {
+    return catalogo.adicionar(pokemon)
+}
