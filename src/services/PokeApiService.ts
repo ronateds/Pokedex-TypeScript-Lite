@@ -1,18 +1,31 @@
-import { PokemonResumo } from "../models/Pokemon";
+import { PokemonResumo } from '../models/Pokemon';
 
 export async function buscarPokemon(nomeOuId: string): Promise<PokemonResumo | null> {
     return new Promise(async (resolve) => {
-        const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${ nomeOuId }`);
-        const dados = await resposta.json();
+        try {
+            const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${nomeOuId}`);
 
-        const pokemon: PokemonResumo = {
-            id: dados.id,
-            nome: dados.name,
-            tipos: dados.types,
-            altura: dados.height,
-            peso: dados.weight
+            if (!resposta.ok) {
+                console.log(`[ERRO] Pokémon não encontrado: ${nomeOuId}`);
+                return null;
+                return;
+            }
+
+            const dados = await resposta.json();
+
+            const pokemon: PokemonResumo = {
+                id: dados.id,
+                nome: dados.name,
+                tipos: dados.types.map( (item: any) => item.type.name ),
+                altura: dados.height,
+                peso: dados.weight
+            };
+
+            resolve(pokemon);
+
+        } catch (erro) {
+            console.log("[ERRO] Não foi possível buscar o Pokémon.");
+            return null;
         }
-
-        resolve(pokemon)
     });
 }
