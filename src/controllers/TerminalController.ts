@@ -28,3 +28,7 @@ export function adicionarAoCatalogo(catalogo: Catalogo, pokemon: PokemonResumo):
 export function listarCatalogo(catalogo: Catalogo): void {
     catalogo.listar()
 }
+
+export function removerDoCatalogo(catalogo: Catalogo, pokemonId: number): void {
+    catalogo.remover(pokemonId)
+}
