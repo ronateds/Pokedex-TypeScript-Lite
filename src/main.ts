@@ -35,6 +35,4 @@ async function main() {
     controller.listarCatalogo(catalogo);
     // controller.removerDoCatalogo(catalogo, '25'); // TODO
     controller.listarCatalogo(catalogo);
-
-    controller.listarCatalogo(catalogo);
 }
