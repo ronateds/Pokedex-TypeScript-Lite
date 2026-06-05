@@ -1,6 +1,6 @@
 import { PokemonResumo } from "./Pokemon";
 
-export class Catalogo {
+export class CatalogoPokemon {
     private pokemons: PokemonResumo[] = [];
 
     adicionar(pokemon: PokemonResumo): void {
