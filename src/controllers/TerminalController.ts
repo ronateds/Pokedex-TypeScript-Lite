@@ -1,9 +1,16 @@
-import { CatalogoPokemon, PokemonResumo } from "../models/Pokemon";
+import { PokemonResumo } from "../models/Pokemon";
 
-const catalogo = new CatalogoPokemon();
+function adicionarAoCatalogo(catalogo: PokemonResumo[], pokemon: PokemonResumo): PokemonResumo[] {
+    const jaExiste = catalogo.some(item => item.id === pokemon.id);
 
-function adicionarAoCatalogo(pokemon: PokemonResumo): void {
-    catalogo.adicionar(pokemon);
+    if (jaExiste) {
+        console.log(`[AVISO] ${ pokemon.nome } já está no catálogo.`);
+        return catalogo;
+    }
+
+    catalogo.push(pokemon);
+    console.log(`[OK] ${ pokemon.nome } adicionado ao catálogo.`);
+    return catalogo
 }
 
 function listarCatalogo(catalogo: PokemonResumo[]): void {
@@ -14,8 +21,8 @@ function listarCatalogo(catalogo: PokemonResumo[]): void {
 
     console.log("Catálogo atual:");
     catalogo.forEach(pokemon => {
-        console.log(`#${pokemon.id} - ${pokemon.nome} | Tipos: ${pokemon.tipos.join(", ")} | Altura: ${pokemon.altura} | Peso: ${pokemon.peso}`);
+        console.log(`#${ pokemon.id } - ${ pokemon.nome } | Tipos: ${ pokemon.tipos.join(", ") } | Altura: ${ pokemon.altura } | Peso: ${ pokemon.peso }`);
     });
 }
 
-export { adicionarAoCatalogo, listarCatalogo, catalogo };
+export { adicionarAoCatalogo, listarCatalogo };
