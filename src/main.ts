@@ -1,10 +1,10 @@
-import { PokemonResumo } from "./models/Pokemon";
 import * as controller from "./controllers/TerminalController";
+import { Catalogo } from "./models/Catalogo";
 
 main();
 
 async function main() {
-    let catalogo: PokemonResumo[] = [];
+    let catalogo = new Catalogo();
 
     controller.listarCatalogo(catalogo);
 

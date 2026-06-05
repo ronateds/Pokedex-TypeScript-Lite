@@ -7,7 +7,8 @@ export async function buscarPokemon(nomeOuId: string): Promise<PokemonResumo | n
 
             if (!resposta.ok) {
                 console.log(`[ERRO] Pokémon não encontrado: ${ nomeOuId }`);
-                return null;
+                resolve(null);
+                return;
             }
 
             const dados: PokemonApiResponse = await resposta.json();
@@ -23,7 +24,7 @@ export async function buscarPokemon(nomeOuId: string): Promise<PokemonResumo | n
             resolve(pokemon);
         } catch (erro) {
             console.log("[ERRO] Não foi possível buscar o Pokémon.");
-            return null;
+            resolve(null);
         }
     });
 }
