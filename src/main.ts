@@ -15,6 +15,6 @@ async function main() {
     await controller.adicionarPokemon(catalogo, 'pokemon-inexistente');
 
     controller.listarCatalogo(catalogo);
-    // controller.removerDoCatalogo(catalogo, '25'); // TODO
-    // controller.listarCatalogo(catalogo);
+    controller.removerDoCatalogo(catalogo, 25);
+    controller.listarCatalogo(catalogo);
 }
