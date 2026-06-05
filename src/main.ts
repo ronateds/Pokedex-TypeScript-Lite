@@ -3,6 +3,7 @@ import * as controller from "./controllers/TerminalController";
 
 main();
 
+// TODO refact - muito código repetido
 async function main() {
     let catalogo: PokemonResumo[] = [];
 
@@ -24,11 +25,16 @@ async function main() {
         await controller.buscarPokenonNaAPI(pikachu2String);
     if (pikachu2Obj) controller.adicionarAoCatalogo(catalogo, pikachu2Obj);
 
+    // Adicionar charmander
     let charmanderString: string = 'charmander';
     let charmanderObj: PokemonResumo | null =
         catalogo.find(item => item.nome == charmanderString) ??
         await controller.buscarPokenonNaAPI(charmanderString);
     if (charmanderObj) controller.adicionarAoCatalogo(catalogo, charmanderObj);
+
+    controller.listarCatalogo(catalogo);
+    // controller.removerDoCatalogo(catalogo, '25'); // TODO
+    controller.listarCatalogo(catalogo);
 
     controller.listarCatalogo(catalogo);
 }
