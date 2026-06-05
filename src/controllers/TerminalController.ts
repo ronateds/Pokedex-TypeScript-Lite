@@ -1,6 +1,17 @@
 import { PokemonResumo } from "../models/Pokemon";
+import { buscarPokemon } from "../services/PokeApiService";
 
-function adicionarAoCatalogo(catalogo: PokemonResumo[], pokemon: PokemonResumo): PokemonResumo[] {
+export async function buscarPokenonNaAPI(pokemon: string): Promise<PokemonResumo | null>{
+    return new Promise(async (resolve) => {
+        const _pokemon: PokemonResumo | null = await buscarPokemon(pokemon);
+
+        if(!_pokemon) return null;
+
+        resolve(_pokemon);
+    })
+}
+
+export function adicionarAoCatalogo(catalogo: PokemonResumo[], pokemon: PokemonResumo): PokemonResumo[] {
     const jaExiste = catalogo.some(item => item.id === pokemon.id);
 
     if (jaExiste) {
@@ -13,7 +24,7 @@ function adicionarAoCatalogo(catalogo: PokemonResumo[], pokemon: PokemonResumo):
     return catalogo
 }
 
-function listarCatalogo(catalogo: PokemonResumo[]): void {
+export function listarCatalogo(catalogo: PokemonResumo[]): void {
     if (catalogo.length === 0) {
         console.log("[AVISO] Catálogo vazio.");
         return;
@@ -24,5 +35,3 @@ function listarCatalogo(catalogo: PokemonResumo[]): void {
         console.log(`#${ pokemon.id } - ${ pokemon.nome } | Tipos: ${ pokemon.tipos.join(", ") } | Altura: ${ pokemon.altura } | Peso: ${ pokemon.peso }`);
     });
 }
-
-export { adicionarAoCatalogo, listarCatalogo };
