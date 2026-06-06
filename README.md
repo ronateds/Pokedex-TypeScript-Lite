@@ -54,8 +54,8 @@ npm start
 ```
 ## Estrutura do projeto
 
+```
 pokedex-typescript/
-│
 ├── src/
 │   ├── controllers/
 │   │   └── TerminalController.ts
@@ -72,6 +72,7 @@ pokedex-typescript/
 ├── package.json
 ├── tsconfig.json
 └── README.md
+```
 
 ## Funcionalidades
 
@@ -88,49 +89,56 @@ pokedex-typescript/
 
 ## Entradas testadas:
 
-### pikachu
+### Adicionar Pikachu
+Entrada testada: `pikachu`
 
-Saída obtida:
-
+Saída obtida: 
+```bash
 [OK] Pokémon encontrado: pikachu
-
 #25 - pikachu | Tipos: electric |
+```
 
-## pikachu
+### Entrada duplicada de Pikachu
+Entrada testada: `pikachu`
 
-Para simular uma entrada duplicada
-
-Saída obtida:
-
+Saída obtida: 
+```bash
 [AVISO] pikachu já está no catálogo.
 Remoção
+```
 
-### charmander
+### Adicionar Charmander
+Entrada testada: `charmander`
 
-Saída obtida:
-
+Saída obtida: 
+```bash
 [OK] Pokémon encontrado: charmander
-
 #25 - charmander | Tipos: fire |
+```
 
-### 42
+### Adicionar um Pokemón por ID
+Entrada testada: `42`
 
-Saída obtida:
-
+Saída obtida: 
+```bash
 [OK] Pokémon encontrado: golbat
-
 #25 - golbat | Tipos: poison, flying |
+```
+### Adicionar um Pokemón inexistente
+Entrada testada: `pokemon-inexistente`
 
-### pokemon-inexistente
-
-Saída obtida:
-
+Saída obtida: 
+```bash
 [ERRO] Pokémon não encontrado: pokemon-inexistente
+```
 
-### remover ID 25
+### Remover um Pokemón
+Entrada testada: `25`
 
-Saída obtida:
+Saída obtida: 
+```bash
 [OK] Pokémon removido do catálogo.
+```
 
 ## Conceitos aplicados
 
