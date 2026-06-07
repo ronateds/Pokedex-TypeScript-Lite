@@ -1,3 +1,4 @@
+import { listarFormato } from "../utils/textFormatters";
 import { PokemonResumo } from "./Pokemon";
 
 export class CatalogoPokemon {
@@ -7,12 +8,13 @@ export class CatalogoPokemon {
         const jaExiste = this.pokemons.some(item => item.id === pokemon.id);
 
         if (jaExiste) {
-            console.log(`[AVISO] ${ pokemon.nome } já está no catálogo.`);
+            console.log(`[AVISO] ${ pokemon.nome } já está no catálogo.\n`);
             return;
         }
 
         this.pokemons.push(pokemon);
         console.log(`[OK] ${ pokemon.nome } adicionado ao catálogo.`);
+        console.log(listarFormato(pokemon), '\n');
     }
 
     encontrar(pokemon: string): PokemonResumo | undefined {
@@ -21,24 +23,28 @@ export class CatalogoPokemon {
 
     listar(): void {
         if (this.pokemons.length === 0) {
-            console.log("[AVISO] Catálogo vazio.");
+            console.log("[AVISO] Catálogo vazio.\n");
             return;
         }
 
+        console.log('Catálogo atual:');
+
         this.pokemons.forEach(pokemon => {
-            console.log(`#${ pokemon.id } - ${ pokemon.nome } | Tipos: ${ pokemon.tipos.join(", ") }`);
+            console.log(listarFormato(pokemon));
         });
+        
+        console.log('\n')
     }
 
     remover(id: number): void {
         const existe = this.pokemons.some(pokemon => pokemon.id === id);
 
         if (!existe) {
-            console.log(`[AVISO] Nenhum Pokémon encontrado com esse ID: ${ id }`);
+            console.log(`[AVISO] Nenhum Pokémon encontrado com esse ID: ${ id }\n`);
             return;
         }
 
         this.pokemons = this.pokemons.filter(pokemon => pokemon.id !== id);
-        console.log(`[OK] Pokémon removido do catálogo.`);
+        console.log(`[OK] Pokémon removido do catálogo.\n`);
     }
 }

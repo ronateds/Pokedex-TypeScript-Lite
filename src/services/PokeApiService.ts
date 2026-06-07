@@ -13,7 +13,7 @@ export class PokeApiService {
                 const resposta = await fetch(`${ this.baseUrl + nomeOuId }`);
 
                 if (!resposta.ok) {
-                    console.log(`[ERRO] Pokémon não encontrado: ${ nomeOuId }`);
+                    console.log(`[ERRO] Pokémon não encontrado: ${ nomeOuId }\n`);
                     resolve(null);
                     return;
                 }
@@ -30,7 +30,7 @@ export class PokeApiService {
 
                 resolve(pokemon);
             } catch (erro) {
-                console.log("[ERRO] Não foi possível buscar o Pokémon.");
+                console.log("[ERRO] Não foi possível buscar o Pokémon.\n");
                 resolve(null);
             }
         });
