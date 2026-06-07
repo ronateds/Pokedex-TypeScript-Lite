@@ -1,20 +1,14 @@
-import * as controller from "./controllers/TerminalController";
+import { TerminalController } from "./controllers/TerminalController";
 import { CatalogoPokemon } from "./models/CatalogoPokemon";
+import { PokeApiService } from "./services/PokeApiService";
 
 main();
 
 async function main() {
+    let pokeapi = new PokeApiService();
     let catalogo = new CatalogoPokemon();
 
-    controller.listarCatalogo(catalogo);
+    const terminalController = new TerminalController(pokeapi, catalogo);
 
-    await controller.adicionarPokemon(catalogo, 'pikachu');
-    await controller.adicionarPokemon(catalogo, 'pikachu');
-    await controller.adicionarPokemon(catalogo, 'charmander');
-    await controller.adicionarPokemon(catalogo, '42');
-    await controller.adicionarPokemon(catalogo, 'pokemon-inexistente');
-
-    controller.listarCatalogo(catalogo);
-    controller.removerDoCatalogo(catalogo, 25);
-    controller.listarCatalogo(catalogo);
+    await terminalController.start()
 }
