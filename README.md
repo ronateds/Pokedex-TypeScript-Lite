@@ -92,7 +92,7 @@ pokedex-typescript/
 ### Adicionar Pikachu
 Entrada testada: `pikachu`
 
-Saída obtida: 
+Saída obtida:
 ```bash
 [OK] Pokémon encontrado: pikachu
 #25 - pikachu | Tipos: electric |
@@ -101,16 +101,15 @@ Saída obtida:
 ### Entrada duplicada de Pikachu
 Entrada testada: `pikachu`
 
-Saída obtida: 
+Saída obtida:
 ```bash
 [AVISO] pikachu já está no catálogo.
-Remoção
 ```
 
 ### Adicionar Charmander
 Entrada testada: `charmander`
 
-Saída obtida: 
+Saída obtida:
 ```bash
 [OK] Pokémon encontrado: charmander
 #25 - charmander | Tipos: fire |
@@ -119,7 +118,7 @@ Saída obtida:
 ### Adicionar um Pokemón por ID
 Entrada testada: `42`
 
-Saída obtida: 
+Saída obtida:
 ```bash
 [OK] Pokémon encontrado: golbat
 #25 - golbat | Tipos: poison, flying |
@@ -127,7 +126,7 @@ Saída obtida:
 ### Adicionar um Pokemón inexistente
 Entrada testada: `pokemon-inexistente`
 
-Saída obtida: 
+Saída obtida:
 ```bash
 [ERRO] Pokémon não encontrado: pokemon-inexistente
 ```
@@ -135,7 +134,7 @@ Saída obtida:
 ### Remover um Pokemón
 Entrada testada: `25`
 
-Saída obtida: 
+Saída obtida:
 ```bash
 [OK] Pokémon removido do catálogo.
 ```
