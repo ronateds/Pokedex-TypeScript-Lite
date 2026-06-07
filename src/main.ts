@@ -1,14 +1,18 @@
 import { TerminalController } from "./controllers/TerminalController";
-import { CatalogoPokemon } from "./models/CatalogoPokemon";
+import { PokemonResumo } from "./models/Pokemon";
+import { BoxService } from "./services/BoxService";
 import { PokeApiService } from "./services/PokeApiService";
 
 main();
 
-async function main() {
-    let pokeapi = new PokeApiService();
-    let catalogo = new CatalogoPokemon();
+async function main(): Promise<void> {
+    // Instancia serviços
+    let pokeApi: PokeApiService = new PokeApiService();
+    let boxService: BoxService<PokemonResumo> = new BoxService<PokemonResumo>();
 
-    const terminalController = new TerminalController(pokeapi, catalogo);
+    // Instancia controller
+    const terminalController = new TerminalController(pokeApi, boxService);
 
-    await terminalController.start()
+    // Executa Instruções
+    await terminalController.start();
 }

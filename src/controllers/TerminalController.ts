@@ -1,45 +1,45 @@
-import { CatalogoPokemon } from "../models/CatalogoPokemon";
 import { PokemonResumo } from "../models/Pokemon";
+import { BoxService } from "../services/BoxService";
 import { PokeApiService } from "../services/PokeApiService";
 
 export class TerminalController {
     constructor(
         private readonly api: PokeApiService,
-        private readonly catalogo: CatalogoPokemon
+        private readonly boxService: BoxService<PokemonResumo>
     ) {}
 
     public async start(): Promise<void> {
-        this.listarCatalogo(this.catalogo);
+        this.listarCatalogo();
 
-        await this.adicionarPokemon(this.catalogo, 'pikachu');
-        await this.adicionarPokemon(this.catalogo, 'pikachu');
-        await this.adicionarPokemon(this.catalogo, 'charmander');
-        await this.adicionarPokemon(this.catalogo, '42');
-        await this.adicionarPokemon(this.catalogo, 'pokemon-inexistente');
+        await this.adicionarPokemon('pikachu');
+        await this.adicionarPokemon('pikachu');
+        await this.adicionarPokemon('charmander');
+        await this.adicionarPokemon('42');
+        await this.adicionarPokemon('pokemon-inexistente');
 
-        this.listarCatalogo(this.catalogo);
-        this.removerDoCatalogo(this.catalogo, 25);
-        this.listarCatalogo(this.catalogo);
+        this.listarCatalogo();
+        this.removerDoCatalogo(25);
+        this.listarCatalogo();
     }
 
     // Busca pokemon no catalogo local, se não existir, busca na PokeAPI e adiciona ao catalogo.
-    private async adicionarPokemon(catalogo: CatalogoPokemon, pokemon: string): Promise<void> {
+    private async adicionarPokemon(pokemonNameorId: string): Promise<void> {
         const pokemonObj: PokemonResumo | null =
-            catalogo.encontrar(pokemon) ??
-            await this.api.buscarPokemon(pokemon);
+            this.boxService.encontrar(pokemonNameorId) ??
+            await this.api.buscarPokemon(pokemonNameorId);
 
-        if (pokemonObj) this.adicionarAoCatalogo(catalogo, pokemonObj);
+        if (pokemonObj) this.adicionarAoCatalogo(pokemonObj);
     }
 
-    adicionarAoCatalogo(catalogo: CatalogoPokemon, pokemon: PokemonResumo): void {
-        catalogo.adicionar(pokemon)
+    private adicionarAoCatalogo(pokemon: PokemonResumo): void {
+        this.boxService.adicionar(pokemon);
     }
 
-    listarCatalogo(catalogo: CatalogoPokemon): void {
-        catalogo.listar()
+    private listarCatalogo(): void {
+        this.boxService.listar();
     }
 
-    removerDoCatalogo(catalogo: CatalogoPokemon, pokemonId: number): void {
-        catalogo.remover(pokemonId)
+    private removerDoCatalogo(pokemonId: number): void {
+        this.boxService.remover(pokemonId)
     }
 }
