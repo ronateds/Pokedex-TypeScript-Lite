@@ -60,14 +60,14 @@ pokedex-typescript/
 │   ├── controllers/
 │   │   └── TerminalController.ts
 │   ├── models/
-│   │   ├── Pokemon.ts
 │   │   └── CatalogoPokemon.ts
+│   │   ├── Pokemon.ts
 │   ├── services/
+│   │   └── BoxService.ts
 │   │   └── PokeApiService.ts
 │   ├── utils/
 │   │   └── textFormatters.ts
 │   └── main.ts
-│   └── pc_box.json
 ├── .gitignore
 ├── package.json
 ├── tsconfig.json
@@ -95,7 +95,7 @@ Entrada testada: `pikachu`
 Saída obtida:
 ```bash
 [OK] Pokémon encontrado: pikachu
-#25 - pikachu | Tipos: electric |
+#25 - pikachu | Tipos: electric | Altura: 4 | Peso: 60
 ```
 
 ### Entrada duplicada de Pikachu
@@ -112,7 +112,7 @@ Entrada testada: `charmander`
 Saída obtida:
 ```bash
 [OK] Pokémon encontrado: charmander
-#25 - charmander | Tipos: fire |
+#25 - charmander | Tipos: fire | Altura: 6 | Peso: 85|
 ```
 
 ### Adicionar um Pokemón por ID
@@ -121,7 +121,7 @@ Entrada testada: `42`
 Saída obtida:
 ```bash
 [OK] Pokémon encontrado: golbat
-#25 - golbat | Tipos: poison, flying |
+#25 - golbat | Tipos: poison, flying | Altura: 16 | Peso: 550
 ```
 ### Adicionar um Pokemón inexistente
 Entrada testada: `pokemon-inexistente`
