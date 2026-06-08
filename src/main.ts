@@ -11,7 +11,7 @@ async function main(): Promise<void> {
     let boxService: BoxService<PokemonResumo> = new BoxService<PokemonResumo>();
 
     // Instancia controller
-    const terminalController = new TerminalController(pokeApi, boxService);
+    const terminalController: TerminalController = new TerminalController(pokeApi, boxService);
 
     // Executa Instruções
     await terminalController.start();

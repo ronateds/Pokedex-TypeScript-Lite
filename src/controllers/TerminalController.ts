@@ -11,28 +11,28 @@ export class TerminalController {
     public async start(): Promise<void> {
         this.listarCatalogo();
 
-        await this.adicionarPokemon('pikachu');
-        await this.adicionarPokemon('pikachu');
-        await this.adicionarPokemon('charmander');
-        await this.adicionarPokemon('42');
-        await this.adicionarPokemon('pokemon-inexistente');
+        await this.adicionarAoCatalogo('pikachu');
+        await this.adicionarAoCatalogo('pikachu');
+        await this.adicionarAoCatalogo('charmander');
+        await this.adicionarAoCatalogo('42');
+        await this.adicionarAoCatalogo('pokemon-inexistente');
 
         this.listarCatalogo();
+        this.removerDoCatalogo(25);
         this.removerDoCatalogo(25);
         this.listarCatalogo();
     }
 
-    // Busca pokemon no catalogo local, se não existir, busca na PokeAPI e adiciona ao catalogo.
-    private async adicionarPokemon(pokemonNameorId: string): Promise<void> {
-        const pokemonObj: PokemonResumo | null =
-            this.boxService.encontrar(pokemonNameorId) ??
-            await this.api.buscarPokemon(pokemonNameorId);
+    /*
+      Busca pokemon no catalogo local, se não existir, busca na PokeAPI e tenta adicionar ao catalogo.
+      Mesmo se o obj já está no catálogo, vai ser tentado adicionar novamente para simular o aviso de que já existe, conforme requerimento.
+    */
+    private async adicionarAoCatalogo(pokemonNomeOuId: string): Promise<void> {
+        let pokemonObj: PokemonResumo | null =
+            this.boxService.encontrar(pokemonNomeOuId) ??
+            await this.api.buscarPokemon(pokemonNomeOuId);
 
-        if (pokemonObj) this.adicionarAoCatalogo(pokemonObj);
-    }
-
-    private adicionarAoCatalogo(pokemon: PokemonResumo): void {
-        this.boxService.adicionar(pokemon);
+        if (pokemonObj) this.boxService.adicionar(pokemonObj);
     }
 
     private listarCatalogo(): void {
@@ -40,6 +40,6 @@ export class TerminalController {
     }
 
     private removerDoCatalogo(pokemonId: number): void {
-        this.boxService.remover(pokemonId)
+        this.boxService.remover(pokemonId);
     }
 }
