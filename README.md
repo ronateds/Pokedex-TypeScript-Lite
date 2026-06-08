@@ -41,7 +41,7 @@ Antes de executar o projeto, é necessário ter instalado:
 - npm
 - Git
 
-## Como utilizar
+## Como instalar e executar
 
 Copie e cole os códigos abaixo no terminal.
 
@@ -93,7 +93,7 @@ pokedex-typescript/
 Entrada testada: `pikachu`
 
 Saída obtida:
-```bash
+```
 [OK] Pokémon encontrado: pikachu
 #25 - pikachu | Tipos: electric | Altura: 4 | Peso: 60
 ```
@@ -102,7 +102,7 @@ Saída obtida:
 Entrada testada: `pikachu`
 
 Saída obtida:
-```bash
+```
 [AVISO] pikachu já está no catálogo.
 ```
 
@@ -110,7 +110,7 @@ Saída obtida:
 Entrada testada: `charmander`
 
 Saída obtida:
-```bash
+```
 [OK] Pokémon encontrado: charmander
 #25 - charmander | Tipos: fire | Altura: 6 | Peso: 85|
 ```
@@ -119,7 +119,7 @@ Saída obtida:
 Entrada testada: `42`
 
 Saída obtida:
-```bash
+```
 [OK] Pokémon encontrado: golbat
 #25 - golbat | Tipos: poison, flying | Altura: 16 | Peso: 550
 ```
@@ -127,7 +127,7 @@ Saída obtida:
 Entrada testada: `pokemon-inexistente`
 
 Saída obtida:
-```bash
+```
 [ERRO] Pokémon não encontrado: pokemon-inexistente
 ```
 
@@ -135,8 +135,16 @@ Saída obtida:
 Entrada testada: `25`
 
 Saída obtida:
-```bash
+```
 [OK] Pokémon removido do catálogo.
+```
+
+### Remover um Pokemón que não está no catálogo
+Entrada testada: `25`
+
+Saída obtida:
+```
+[AVISO] Nenhum Pokémon encontrado com esse ID: 25
 ```
 
 ## Conceitos aplicados
@@ -155,14 +163,23 @@ A aplicação faz consultas a PokeAPI utilizando a função fetch, e para tal é
 A função de consulta na PokeAPI está envolta em um try/catch e que em casos de Pokémon inexistente ou erro retorna null, porém não quebra o sistema, apenas imprime no terminal uma mensagem de erro.
 
 ## Métodos de array utilizados
-- `map` - transforma os tipos da API em array de strings - `PokeApiService.ts`
-- `some` - verifica duplicidade e existência antes de remover - `CatalogoPokemon.ts`
-- `filter` - remove Pokémon pelo ID - `CatalogoPokemon.ts`
-- `forEach` - lista o catálogo no terminal - `CatalogoPokemon.ts`
-- `find` - busca Pokémon por ID no catálogo - `CatalogoPokemon.ts`
+### CatalogoPokemon.ts
+- `push` - adiciona pokemon no catálogo
+- `some` - verifica se existe no catálogo
+- `find` - busca Pokémon por ID no catálogo
+- `filter` - remove Pokémon pelo ID
+
+### BoxService.ts
+- `forEach` - imprimir cada Pokémon da lista
+
+### PokeApiService.ts
+- `map` - transforma os tipos da API em array de strings
+
+### textFormatters.ts
+- `join` - formatação dos tipos para imprimir
 
 ## Classe CatalogoPokemon
-Foi criado o atributo pokemons e os métodos: adicionar, encontrar, listar e remover.
+Foi criado o atributo pokemons e os métodos: adicionar, existe, encontrar, listar e remover.
 
 ## Organização do Kanban
 
